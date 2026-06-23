@@ -1,7 +1,7 @@
 # Проект «Большое путешествие»
 
 * Студент: [Александр Кузнецов](https://up.htmlacademy.ru/ecmascript-individual/2/user/2062579).
-* Наставник: [Евгений Лепёшкин](https://htmlacademy.ru/profile/spearance).
+* Наставник: `Неизвестно`.
 
 ---
 
