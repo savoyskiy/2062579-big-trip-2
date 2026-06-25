@@ -1,33 +1,20 @@
-import { createElement } from '../render.js';
-
-const createTripInfoTemplate = () => (
-  `<section class="trip-main__trip-info  trip-info">
-    <div class="trip-info__main">
-      <h1 class="trip-info__title">Amsterdam &mdash; Chamonix &mdash; Geneva</h1>
-
-      <p class="trip-info__dates">18&nbsp;&mdash;&nbsp;20 Mar</p>
-    </div>
-
-    <p class="trip-info__cost">
-      Total: &euro;&nbsp;<span class="trip-info__cost-value">1230</span>
-    </p>
-  </section>`
-);
+import { RenderPosition, render } from '../render.js';
+import TripInfoSectionView from './trip-info-container-view.js';
+import TripInfoMainView from './trip-info-main-view.js';
+import TripInfoCostView from './trip-info-cost-view.js';
 
 export default class TripInfoView {
-  getTemplate() {
-    return createTripInfoTemplate();
+  infoSection = new TripInfoSectionView();
+
+  constructor({tripInfoContainer}) {
+    this.tripInfoContainer = tripInfoContainer; // получаем контейнер, в который будет вставлен блок Инфо
   }
 
-  getElement() {
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
-    }
+  init() {
+    render(this.infoSection, this.tripInfoContainer, RenderPosition.AFTERBEGIN); // создаем секцию для Инфо в контейнере
 
-    return this.element;
-  }
+    render(new TripInfoMainView(), this.infoSection.getElement(), RenderPosition.AFTERBEGIN); // вставляем основные данные из инфо в начало секции
 
-  removeElement() {
-    this.element = null;
+    render(new TripInfoCostView(), this.infoSection.getElement()); // вставляем стоимость из инфо
   }
 }
