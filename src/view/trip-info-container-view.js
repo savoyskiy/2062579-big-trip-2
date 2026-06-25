@@ -1,7 +1,8 @@
 import { createElement } from '../render.js';
 
 const createTripInfoSectionTemplate = () => (
-  '<section class="trip-main__trip-info  trip-info"></section>'
+  `<section class="trip-main__trip-info  trip-info">
+  </section>`
 );
 
 export default class TripInfoSectionView {
