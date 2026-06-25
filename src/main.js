@@ -1,7 +1,7 @@
-import TripInfoView from './view/trip-info-view.js';
+import TripInfoView from './presenter/trip-info-presenter.js';
 import FilterView from './view/filter-view.js';
 import SortingView from './view/sorting-view.js';
-import EventsPresenter from './view/events-presenter.js';
+import EventsPresenter from './presenter/events-presenter.js';
 import { render } from './render.js';
 
 const tripInfoContainer = document.querySelector('.trip-main');
