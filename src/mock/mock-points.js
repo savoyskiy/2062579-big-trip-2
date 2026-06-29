@@ -1,6 +1,6 @@
 import { getRandomArrayElement } from '../utils.js';
-import { mockDestinations } from './mock-destinations.js';
-import { mockOffers } from './mock-offers.js';
+// import { mockDestinations } from './mock-destinations.js';
+// import { mockOffers } from './mock-offers.js';
 
 const mockPrices = [5, 10, 20, 30, 40, 45, 50, 75, 90, 95, 100, 105, 115, 120, 150, 175, 200, 250, 300];
 
@@ -10,9 +10,13 @@ const mockPoints = [
     'base_price': getRandomArrayElement(mockPrices),
     'date_from': '2026-05-09T11:22:33.444Z',
     'date_to': '2026-05-09T11:52:35.666Z',
-    'destination': '', // связано с набором mockDestinations по ключу
+    'destination': 'ljuccr-6492', // связано с набором mockDestinations по ключу
     'is_favorite': false,
-    'offers': [], // связано с набором mockOffers по ключу
+    'offers': [
+      'dfg-123',
+      'ase-654',
+      'kjb-987'
+    ], // связано с набором mockOffers по ключу
     'type': 'taxi' // допустимый список: taxi┃bus┃train┃ship┃drive┃flight┃check-in┃sightseeing┃restaurant
   },
   {
@@ -20,9 +24,13 @@ const mockPoints = [
     'base_price': getRandomArrayElement(mockPrices),
     'date_from': '2026-05-10T09:00:33.444Z',
     'date_to': '2026-05-10T10:15:35.666Z',
-    'destination': '',
+    'destination': 'ljuccr-6492',
     'is_favorite': true,
-    'offers': [],
+    'offers': [
+      'erwr-63',
+      'retr-14',
+      'kyuk-82'
+    ],
     'type': 'sightseeing'
   },
   {
@@ -30,9 +38,13 @@ const mockPoints = [
     'base_price': getRandomArrayElement(mockPrices),
     'date_from': '2026-05-21T23:00:33.444Z',
     'date_to': '2026-05-22T08:00:35.666Z',
-    'destination': '',
+    'destination': 'asasdd-2591',
     'is_favorite': true,
-    'offers': [],
+    'offers': [
+      'weqd-95',
+      'asdd-87',
+      'erer-79'
+    ],
     'type': 'train'
   },
   {
@@ -40,9 +52,12 @@ const mockPoints = [
     'base_price': getRandomArrayElement(mockPrices),
     'date_from': '2026-06-30T10:30:33.444Z',
     'date_to': '2026-06-30T11:05:35.555Z',
-    'destination': '',
+    'destination': 'egaflk-6797',
     'is_favorite': false,
-    'offers': [],
+    'offers': [
+      'dwq-632',
+      'okj-655'
+    ],
     'type': 'bus'
   },
   {
@@ -50,9 +65,13 @@ const mockPoints = [
     'base_price': getRandomArrayElement(mockPrices),
     'date_from': '2026-07-10T15:00:33.444Z',
     'date_to': '2026-07-10T18:00:35.555Z',
-    'destination': '',
+    'destination': 'egaflk-6797',
     'is_favorite': true,
-    'offers': [],
+    'offers': [
+      'iuouio-625',
+      'wwqewe-147',
+      'yuiyui-951'
+    ],
     'type': 'restaurant'
   },
   {
@@ -60,9 +79,12 @@ const mockPoints = [
     'base_price': getRandomArrayElement(mockPrices),
     'date_from': '2026-07-21T22:00:33.444Z',
     'date_to': '2026-07-22T04:00:35.555Z',
-    'destination': '',
+    'destination': 'rhtfgd-3213',
     'is_favorite': false,
-    'offers': [],
+    'offers': [
+      'das-981',
+      'nvb-235'
+    ],
     'type': 'flight'
   },
   {
@@ -70,9 +92,11 @@ const mockPoints = [
     'base_price': getRandomArrayElement(mockPrices),
     'date_from': '2026-09-01T09:00:33.444Z',
     'date_to': '2026-09-01T10:00:35.666Z',
-    'destination': '',
+    'destination': 'rhtfgd-3213',
     'is_favorite': true,
-    'offers': [],
+    'offers': [
+      'hjkh-32'
+    ],
     'type': 'check-in'
   },
   {
@@ -80,9 +104,12 @@ const mockPoints = [
     'base_price': getRandomArrayElement(mockPrices),
     'date_from': '2026-09-30T10:30:33.444Z',
     'date_to': '2026-09-30T11:35:35.555Z',
-    'destination': '',
+    'destination': 'ojnojn-9519',
     'is_favorite': false,
-    'offers': [],
+    'offers': [
+      'dwq-632',
+      'okj-655'
+    ],
     'type': 'bus'
   },
   {
@@ -90,9 +117,13 @@ const mockPoints = [
     'base_price': getRandomArrayElement(mockPrices),
     'date_from': '2026-10-05T18:00:33.444Z',
     'date_to': '2026-10-05T21:00:35.555Z',
-    'destination': '',
+    'destination': 'werrer-5464',
     'is_favorite': true,
-    'offers': [],
+    'offers': [
+      'iuouio-625',
+      'wwqewe-147',
+      'yuiyui-951'
+    ],
     'type': 'restaurant'
   },
   {
@@ -100,9 +131,12 @@ const mockPoints = [
     'base_price': getRandomArrayElement(mockPrices),
     'date_from': '2026-12-25T12:13:33.444Z',
     'date_to': '2026-12-25T15:41:35.555Z',
-    'destination': '',
+    'destination': 'werrer-5464',
     'is_favorite': true,
-    'offers': [],
+    'offers': [
+      'das-981',
+      'nvb-235'
+    ],
     'type': 'flight'
   },
 ];

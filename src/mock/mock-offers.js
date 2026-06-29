@@ -28,7 +28,7 @@ const mockOffers = [
         'price': 10
       },
       {
-        'id': '',
+        'id': 'okj-655',
         'title': 'Место у окна',
         'price': 15
       },
