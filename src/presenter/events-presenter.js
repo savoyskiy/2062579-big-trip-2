@@ -4,10 +4,7 @@ import EditPointView from '../view/edit-point-view.js';
 import PointView from '../view/point-view.js';
 import { RenderPosition, render } from '../render.js';
 
-// const POINTS_NUMBER = 3; // количество отрисовываемых точек маршрута
-
 export default class EventsPresenter {
-  eventsPoint = new PointView(); // точка маршрута
   pointsList = new PointsListView(); // список для точек маршрута
 
   constructor({pointsListContainer, pointsModel}) {
