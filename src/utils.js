@@ -12,18 +12,26 @@ const getTime = (time) => time ? dayjs(time).format(TIME_FORMAT) : '';
 
 const getTimeHourLength = (dateFrom, dateTo) => {
   let result = '';
-  const length = dayjs(dateTo).diff(dayjs(dateFrom), 'hour');
-  if(length !== '0') {
-    result = length;
+  const length = dayjs(dateTo).diff(dayjs(dateFrom), 'h');
+  if(length === 0) {
+    return result;
+  } else if(length < 10) {
+    result = `0${length}H`;
+  } else {
+    result = `${length}H`;
   }
   return result;
 };
 
 const getTimeMinuteLength = (dateFrom, dateTo) => {
-  let result = '';
-  const length = dayjs(dateTo).diff(dayjs(dateFrom), 'minute');
-  if (length !== '0') {
-    result = length % 60;
+  let result = '00';
+  const length = dayjs(dateTo).diff(dayjs(dateFrom), 'm');
+  const remains = length % 60;
+  if (remains !== 0) {
+    result = `${length % 60}M`;
+  }
+  if(remains < 10) {
+    result = `0${ length % 60}M`;
   }
   return result;
 };

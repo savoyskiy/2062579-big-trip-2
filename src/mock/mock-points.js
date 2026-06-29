@@ -8,13 +8,13 @@ const mockPoints = [
     'basePrice': getRandomArrayElement(mockPrices),
     'dateFrom': '2026-05-09T11:22:33.444Z',
     'dateTo': '2026-05-09T11:52:35.666Z',
-    'destination': 'ljuccr-6492', // связано с набором mockDestinations по ключу
+    'destination': 'ljuccr-6492', // связать с набором mockDestinations по ключу
     'isFavorite': false,
     'offers': [
       'dfg-123',
       'ase-654',
       'kjb-987'
-    ], // связано с набором mockOffers по ключу
+    ], // связать с набором mockOffers по ключу
     'type': 'taxi' // допустимый список: taxi┃bus┃train┃ship┃drive┃flight┃check-in┃sightseeing┃restaurant
   },
   {
