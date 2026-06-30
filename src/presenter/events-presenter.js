@@ -14,11 +14,12 @@ export default class EventsPresenter {
 
   init() {
     this.eventsPoints = [...this.pointsModel.getPoints()];
+    this.destinations = [...this.pointsModel.getDestinations()];
 
     render(this.pointsList, this.pointsListContainer); // вставляем список в контейнер
 
     for(let i = 0; i < this.eventsPoints.length; i++) {
-      render(new PointView({point: this.eventsPoints[i]}), this.pointsList.getElement()); // добавляем в список три точки
+      render(new PointView({point: this.eventsPoints[i]}, this.destinations), this.pointsList.getElement()); // добавляем в список три точки
     }
 
     render(new EditPointView(), this.pointsList.getElement(), RenderPosition.AFTERBEGIN); // вставляем в начало списка форму редактирования точки

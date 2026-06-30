@@ -1,8 +1,9 @@
 import { createElement } from '../render.js';
 import { getDate, getTime, getTimeLength, setFavoriteClass } from '../utils.js';
 
-const createPointTemplate = (point) => {
-  const {basePrice, dateFrom, dateTo, destination, isFavorite, type} = point;
+const createPointTemplate = (point, destinations) => {
+  const {basePrice, dateFrom, dateTo, isFavorite, type} = point;
+  const pointDestination = destinations.find((dest) => dest.id === point.destination);
 
   const date = getDate(dateFrom);
   const startTime = getTime(dateFrom);
@@ -17,7 +18,7 @@ const createPointTemplate = (point) => {
           <div class="event__type">
             <img class="event__type-icon" width="42" height="42" src="img/icons/${type}.png" alt="Event type icon">
           </div>
-          <h3 class="event__title">${type} ${destination}</h3>
+          <h3 class="event__title">${type} ${pointDestination.name}</h3>
           <div class="event__schedule">
             <p class="event__time">
               <time class="event__start-time" datetime="2019-03-18T10:30">${startTime}</time>
@@ -52,12 +53,13 @@ const createPointTemplate = (point) => {
 };
 
 export default class PointView {
-  constructor({ point }) {
+  constructor({ point }, destinations) {
     this.point = point;
+    this.destinations = destinations;
   }
 
   getTemplate() {
-    return createPointTemplate(this.point);
+    return createPointTemplate(this.point, this.destinations);
   }
 
   getElement() {

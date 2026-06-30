@@ -12,7 +12,7 @@ const tripEventsContainer = document.querySelector('.trip-events');
 const pointsModel = new PointsModel();
 const eventsPresenter = new EventsPresenter({ // создаем презентер с указанием контейнера, в который он добавится, + добавляем в него модель
   pointsListContainer: tripEventsContainer,
-  pointsModel
+  pointsModel: pointsModel
 });
 const tripInfo = new TripInfoView({tripInfoContainer: tripInfoContainer});
 
