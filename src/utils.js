@@ -36,6 +36,8 @@ const getTimeMinuteLength = (dateFrom, dateTo) => {
   return result;
 };
 
+const getTimeLength = (dateFrom, dateTo) => `${getTimeHourLength(dateFrom, dateTo)} ${getTimeMinuteLength(dateFrom, dateTo)}`;
+
 const setFavoriteClass = (data) => data ? 'event__favorite-btn--active' : '';
 
-export { getRandomArrayElement, getDate, getTime, getTimeHourLength, getTimeMinuteLength, setFavoriteClass };
+export { getRandomArrayElement, getDate, getTime, getTimeLength, setFavoriteClass };

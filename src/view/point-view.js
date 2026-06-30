@@ -1,5 +1,5 @@
 import { createElement } from '../render.js';
-import { getDate, getTime, getTimeHourLength, getTimeMinuteLength, setFavoriteClass } from '../utils.js';
+import { getDate, getTime, getTimeLength, setFavoriteClass } from '../utils.js';
 
 const createPointTemplate = (point) => {
   const {basePrice, dateFrom, dateTo, destination, isFavorite, type} = point;
@@ -7,8 +7,7 @@ const createPointTemplate = (point) => {
   const date = getDate(dateFrom);
   const startTime = getTime(dateFrom);
   const endTime = getTime(dateTo);
-  const timeHourLength = getTimeHourLength(dateFrom, dateTo);
-  const timeMinuteLength = getTimeMinuteLength(dateFrom, dateTo);
+  const timeLength = getTimeLength(dateFrom, dateTo);
   const favoriteClass = setFavoriteClass(isFavorite);
 
   return (
@@ -25,7 +24,7 @@ const createPointTemplate = (point) => {
               —
               <time class="event__end-time" datetime="2019-03-18T11:00">${endTime}</time>
             </p>
-            <p class="event__duration">${timeHourLength} ${timeMinuteLength}</p>
+            <p class="event__duration">${timeLength}</p>
           </div>
           <p class="event__price">
             €&nbsp;<span class="event__price-value">${basePrice}</span>

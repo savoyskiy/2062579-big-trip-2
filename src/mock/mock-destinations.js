@@ -1,7 +1,7 @@
 const mockDestinations = [
   {
     'id': 'ljuccr-6492',
-    'description': 'Столица Нидерландов',
+    'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet varius magna, non porta ligula feugiat eget. Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra.',
     'name': 'Амстердам',
     'pictures': [
       {
@@ -16,7 +16,7 @@ const mockDestinations = [
   },
   {
     'id': 'rhtfgd-3213',
-    'description': 'Город в США',
+    'description': 'Nullam nunc ex, convallis sed finibus eget, sollicitudin eget ante. Phasellus eros mauris, condimentum sed nibh vitae, sodales efficitur ipsum. Sed blandit, eros vel aliquam faucibus, purus ex euismod diam, eu luctus nunc ante ut dui.',
     'name': 'Нью-Йорк',
     'pictures': [
       {
@@ -31,7 +31,7 @@ const mockDestinations = [
   },
   {
     'id': 'egaflk-6797',
-    'description': 'Столица Польши',
+    'description': 'Sed sed nisi sed augue convallis suscipit in sed felis. Aliquam erat volutpat. Nunc fermentum tortor ac porta dapibus. In rutrum ac purus sit amet tempus.',
     'name': 'Варшава',
     'pictures': [
       {
@@ -42,7 +42,7 @@ const mockDestinations = [
   },
   {
     'id': 'asasdd-2591',
-    'description': 'Столица России',
+    'description': 'Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra. Nullam nunc ex, convallis sed finibus eget, sollicitudin eget ante. Phasellus eros mauris, condimentum sed nibh vitae, sodales efficitur ipsum.',
     'name': 'Москва',
     'pictures': [
       {
@@ -57,7 +57,7 @@ const mockDestinations = [
   },
   {
     'id': 'ojnojn-9519',
-    'description': 'Столица Японии',
+    'description': 'Sed blandit, eros vel aliquam faucibus, purus ex euismod diam, eu luctus nunc ante ut dui. Sed sed nisi sed augue convallis suscipit in sed felis. Aliquam erat volutpat. Nunc fermentum tortor ac porta dapibus. In rutrum ac purus sit amet tempus.',
     'name': 'Токио',
     'pictures': [
       {
@@ -68,7 +68,7 @@ const mockDestinations = [
   },
   {
     'id': 'werrer-5464',
-    'description': 'На дне',
+    'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id orci ut lectus varius viverra. Nullam nunc ex, convallis sed finibus eget, sollicitudin eget ante. Sed blandit, eros vel aliquam faucibus, purus ex euismod diam, eu luctus nunc ante ut dui.',
     'name': 'Атлантида',
     'pictures': [
       {
