@@ -2,7 +2,7 @@ const mockDestinations = [
   {
     id: 'ljuccr-6492',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet varius magna, non porta ligula feugiat eget. Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra.',
-    name: 'Амстердам',
+    name: 'Amsterdam',
     pictures: [
       {
         src: 'https://loremflickr.com/248/152?random=52',
@@ -17,7 +17,7 @@ const mockDestinations = [
   {
     id: 'rhtfgd-3213',
     description: 'Nullam nunc ex, convallis sed finibus eget, sollicitudin eget ante. Phasellus eros mauris, condimentum sed nibh vitae, sodales efficitur ipsum. Sed blandit, eros vel aliquam faucibus, purus ex euismod diam, eu luctus nunc ante ut dui.',
-    name: 'Нью-Йорк',
+    name: 'New-York',
     pictures: [
       {
         src: 'https://loremflickr.com/248/152?random=22',
@@ -32,7 +32,7 @@ const mockDestinations = [
   {
     id: 'egaflk-6797',
     description: 'Sed sed nisi sed augue convallis suscipit in sed felis. Aliquam erat volutpat. Nunc fermentum tortor ac porta dapibus. In rutrum ac purus sit amet tempus.',
-    name: 'Варшава',
+    name: 'Warsaw',
     pictures: [
       {
         src: 'https://loremflickr.com/248/152?random=16',
@@ -43,7 +43,7 @@ const mockDestinations = [
   {
     id: 'asasdd-2591',
     description: 'Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra. Nullam nunc ex, convallis sed finibus eget, sollicitudin eget ante. Phasellus eros mauris, condimentum sed nibh vitae, sodales efficitur ipsum.',
-    name: 'Москва',
+    name: 'Moscow',
     pictures: [
       {
         src: 'https://loremflickr.com/248/152?random=100',
@@ -58,7 +58,7 @@ const mockDestinations = [
   {
     id: 'ojnojn-9519',
     description: 'Sed blandit, eros vel aliquam faucibus, purus ex euismod diam, eu luctus nunc ante ut dui. Sed sed nisi sed augue convallis suscipit in sed felis. Aliquam erat volutpat. Nunc fermentum tortor ac porta dapibus. In rutrum ac purus sit amet tempus.',
-    name: 'Токио',
+    name: 'Tokyo',
     pictures: [
       {
         src: 'https://loremflickr.com/248/152?random=95',
@@ -69,7 +69,7 @@ const mockDestinations = [
   {
     id: 'werrer-5464',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id orci ut lectus varius viverra. Nullam nunc ex, convallis sed finibus eget, sollicitudin eget ante. Sed blandit, eros vel aliquam faucibus, purus ex euismod diam, eu luctus nunc ante ut dui.',
-    name: 'Атлантида',
+    name: 'Atlantis',
     pictures: []
   },
 ];
