@@ -104,10 +104,7 @@ const mockPoints = [
     dateTo: '2026-09-30T11:35:35.555Z',
     destination: 'ojnojn-9519',
     isFavorite: false,
-    offers: [
-      'dwq-632',
-      'okj-655'
-    ],
+    offers: [],
     type: 'bus'
   },
   {

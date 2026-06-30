@@ -70,16 +70,7 @@ const mockDestinations = [
     id: 'werrer-5464',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id orci ut lectus varius viverra. Nullam nunc ex, convallis sed finibus eget, sollicitudin eget ante. Sed blandit, eros vel aliquam faucibus, purus ex euismod diam, eu luctus nunc ante ut dui.',
     name: 'Атлантида',
-    pictures: [
-      {
-        src: 'https://loremflickr.com/248/152?random=41',
-        description: 'Без понятия, что тут изображено'
-      },
-      {
-        src: 'https://loremflickr.com/248/152?random=141',
-        description: 'И здесь тоже'
-      }
-    ]
+    pictures: []
   },
 ];
 

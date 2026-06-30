@@ -71,13 +71,7 @@ const mockOffers = [
   },
   {
     type: 'drive',
-    offers: [
-      {
-        id: 'jklj-97',
-        title: 'Спортивное авто',
-        price: 40
-      }
-    ]
+    offers: []
   },
   {
     type: 'flight',
