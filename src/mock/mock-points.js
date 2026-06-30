@@ -12,8 +12,7 @@ const mockPoints = [
     isFavorite: false,
     offers: [
       'dfg-123',
-      'ase-654',
-      'kjb-987'
+      'ase-654'
     ], // связать с набором mockOffers по ключу
     type: 'taxi' // допустимый список: taxi┃bus┃train┃ship┃drive┃flight┃check-in┃sightseeing┃restaurant
   },
@@ -25,8 +24,6 @@ const mockPoints = [
     destination: 'ljuccr-6492',
     isFavorite: true,
     offers: [
-      'erwr-63',
-      'retr-14',
       'kyuk-82'
     ],
     type: 'sightseeing'
@@ -40,7 +37,6 @@ const mockPoints = [
     isFavorite: true,
     offers: [
       'weqd-95',
-      'asdd-87',
       'erer-79'
     ],
     type: 'train'
@@ -53,7 +49,6 @@ const mockPoints = [
     destination: 'egaflk-6797',
     isFavorite: false,
     offers: [
-      'dwq-632',
       'okj-655'
     ],
     type: 'bus'
@@ -67,7 +62,6 @@ const mockPoints = [
     isFavorite: true,
     offers: [
       'iuouio-625',
-      'wwqewe-147',
       'yuiyui-951'
     ],
     type: 'restaurant'
@@ -80,7 +74,6 @@ const mockPoints = [
     destination: 'rhtfgd-3213',
     isFavorite: false,
     offers: [
-      'das-981',
       'nvb-235'
     ],
     type: 'flight'
@@ -115,8 +108,6 @@ const mockPoints = [
     destination: 'werrer-5464',
     isFavorite: true,
     offers: [
-      'iuouio-625',
-      'wwqewe-147',
       'yuiyui-951'
     ],
     type: 'restaurant'
@@ -130,7 +121,6 @@ const mockPoints = [
     isFavorite: true,
     offers: [
       'das-981',
-      'nvb-235'
     ],
     type: 'flight'
   },

@@ -4,17 +4,17 @@ const mockOffers = [
     offers: [
       {
         id: 'dfg-123',
-        title: 'Повысить до бизнес-класса',
+        title: 'Upgrade to business class',
         price: 20
       },
       {
         id: 'ase-654',
-        title: 'Детское сиденье',
+        title: 'Baby seat',
         price: 10
       },
       {
         id: 'kjb-987',
-        title: 'Музыка на выбор',
+        title: 'Choice of music',
         price: 50
       },
     ]
@@ -24,12 +24,12 @@ const mockOffers = [
     offers: [
       {
         id: 'dwq-632',
-        title: 'Подушка на шею',
+        title: 'Neck pillow',
         price: 10
       },
       {
         id: 'okj-655',
-        title: 'Место у окна',
+        title: 'Window seat',
         price: 15
       },
     ]
@@ -39,17 +39,17 @@ const mockOffers = [
     offers: [
       {
         id: 'weqd-95',
-        title: 'Место у окна',
+        title: 'Window seat',
         price: 25
       },
       {
         id: 'asdd-87',
-        title: 'Верхняя полка',
+        title: 'Upper berth',
         price: 30
       },
       {
         id: 'erer-79',
-        title: 'Нижняя полка',
+        title: 'Lower berth',
         price: 50
       },
     ]
@@ -59,12 +59,12 @@ const mockOffers = [
     offers: [
       {
         id: 'qwds-22',
-        title: 'Средство от укачивания',
+        title: 'Motion sickness remedy',
         price: 100
       },
       {
         id: 'qazz-65',
-        title: 'Страховка от потопления',
+        title: 'Insurance against drowning',
         price: 300
       },
     ]
@@ -78,12 +78,12 @@ const mockOffers = [
     offers: [
       {
         id: 'das-981',
-        title: 'Дополнительный объем багажа',
+        title: 'Additional baggage volume',
         price: 100
       },
       {
         id: 'nvb-235',
-        title: 'Возвратный билет',
+        title: 'Return ticket',
         price: 200
       }
     ]
@@ -93,7 +93,7 @@ const mockOffers = [
     offers: [
       {
         id: 'hjkh-32',
-        title: 'Без очереди',
+        title: 'No queue',
         price: 15
       }
     ]
@@ -103,17 +103,17 @@ const mockOffers = [
     offers: [
       {
         id: 'erwr-63',
-        title: 'Бинокль',
+        title: 'Binoculars',
         price: 20
       },
       {
         id: 'retr-14',
-        title: 'Зонтик',
+        title: 'Umbrella',
         price: 10
       },
       {
         id: 'kyuk-82',
-        title: 'Экскурсия"',
+        title: 'Excursion',
         price: 15
       },
     ]
@@ -123,17 +123,17 @@ const mockOffers = [
     offers: [
       {
         id: 'iuouio-625',
-        title: 'Заказать музыку',
+        title: 'Order music',
         price: 10
       },
       {
         id: 'wwqewe-147',
-        title: 'Особое меню',
+        title: 'Special menu',
         price: 50
       },
       {
         id: 'yuiyui-951',
-        title: 'Забронировать столик',
+        title: 'Book a table',
         price: 100
       }
     ]
