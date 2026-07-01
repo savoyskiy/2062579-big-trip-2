@@ -19,11 +19,11 @@ export default class EventsPresenter {
 
     render(this.pointsList, this.pointsListContainer); // вставляем список в контейнер
 
-    for(let i = 0; i < this.eventsPoints.length; i++) {
+    for(let i = 1; i < this.eventsPoints.length; i++) {
       render(new PointView({point: this.eventsPoints[i]}, this.destinations, this.offers), this.pointsList.getElement()); // добавляем в список три точки
     }
 
-    render(new EditPointView(), this.pointsList.getElement(), RenderPosition.AFTERBEGIN); // вставляем в начало списка форму редактирования точки
+    render(new EditPointView({point: this.eventsPoints[0]}, this.destinations, this.offers), this.pointsList.getElement(), RenderPosition.AFTERBEGIN); // вставляем в начало списка форму редактирования точки
     render(new AddNewPointView(), this.pointsList.getElement()); // вставляем в список форму добавления новой точки
   }
 }

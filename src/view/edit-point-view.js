@@ -1,13 +1,23 @@
 import { createElement } from '../render.js';
+import { getDate, getTime, DATE_FORMAT } from '../utils.js';
 
-const createEditpointTemplate = () => (
-  `<li class="trip-events__item">
+const createEditpointTemplate = (point, destinations, offers) => {
+  const {basePrice, dateFrom, dateTo, type } = point;
+  const pointDestination = destinations.find((dest) => dest.id === point.destination); // находим в пунктах назначения совпадающий по id c указанным в точке маршрута
+  const typeOffers = offers.find((offer) => offer.type === point.type).offers; // находим в офферах совпадающие по типу с указанным в точке маршрута
+  const selectedOffers = typeOffers.filter((typeOffer) => point.offers.includes(typeOffer.id)); // находим в списке офферов данного типа, выбранные в точке маршрута
+
+  const date = getDate(dateFrom, DATE_FORMAT.EDIT_POINT);
+  const startTime = getTime(dateFrom);
+  const endTime = getTime(dateTo);
+
+  return `<li class="trip-events__item">
     <form class="event event--edit" action="#" method="post">
       <header class="event__header">
         <div class="event__type-wrapper">
           <label class="event__type  event__type-btn" for="event-type-toggle-1">
             <span class="visually-hidden">Choose event type</span>
-            <img class="event__type-icon" width="17" height="17" src="img/icons/flight.png" alt="Event type icon">
+            <img class="event__type-icon" width="17" height="17" src="img/icons/${type}.png" alt="Event type icon">
           </label>
           <input class="event__type-toggle  visually-hidden" id="event-type-toggle-1" type="checkbox">
 
@@ -65,22 +75,23 @@ const createEditpointTemplate = () => (
 
         <div class="event__field-group  event__field-group--destination">
           <label class="event__label  event__type-output" for="event-destination-1">
-            Flight
+            ${type}
           </label>
-          <input class="event__input  event__input--destination" id="event-destination-1" type="text" name="event-destination" value="Chamonix" list="destination-list-1">
+          <input class="event__input  event__input--destination" id="event-destination-1" type="text" name="event-destination" value="${pointDestination.name}" list="destination-list-1">
           <datalist id="destination-list-1">
-            <option value="Amsterdam"></option>
-            <option value="Geneva"></option>
-            <option value="Chamonix"></option>
+            ${destinations.map((dest) => (
+    `<option value="${dest.name}">
+              </option>`
+  )).join('')}
           </datalist>
         </div>
 
         <div class="event__field-group  event__field-group--time">
           <label class="visually-hidden" for="event-start-time-1">From</label>
-          <input class="event__input  event__input--time" id="event-start-time-1" type="text" name="event-start-time" value="18/03/19 12:25">
+          <input class="event__input  event__input--time" id="event-start-time-1" type="text" name="event-start-time" value="${date} ${startTime}">
           —
           <label class="visually-hidden" for="event-end-time-1">To</label>
-          <input class="event__input  event__input--time" id="event-end-time-1" type="text" name="event-end-time" value="18/03/19 13:35">
+          <input class="event__input  event__input--time" id="event-end-time-1" type="text" name="event-end-time" value="${date} ${endTime}">
         </div>
 
         <div class="event__field-group  event__field-group--price">
@@ -88,7 +99,7 @@ const createEditpointTemplate = () => (
             <span class="visually-hidden">Price</span>
             €
           </label>
-          <input class="event__input  event__input--price" id="event-price-1" type="text" name="event-price" value="160">
+          <input class="event__input  event__input--price" id="event-price-1" type="text" name="event-price" value="${basePrice}">
         </div>
 
         <button class="event__save-btn  btn  btn--blue" type="submit">Save</button>
@@ -155,12 +166,18 @@ const createEditpointTemplate = () => (
         </section>
       </section>
     </form>
-  </li>`
-);
+  </li>`;
+};
 
 export default class EditPointView {
+  constructor({ point }, destinations, offers) {
+    this.point = point;
+    this.destinations = destinations;
+    this.offers = offers;
+  }
+
   getTemplate() {
-    return createEditpointTemplate;
+    return createEditpointTemplate(this.point, this.destinations, this.offers);
   }
 
   getElement() {

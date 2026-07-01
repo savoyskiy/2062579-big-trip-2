@@ -2,11 +2,14 @@ import dayjs from 'dayjs';
 
 const getRandomArrayElement = (items) => items[Math.floor(Math.random() * items.length)];
 
-const DATE_FORMAT = 'MMM DD';
+const DATE_FORMAT = {
+  POINT: 'MMM DD',
+  EDIT_POINT: 'DD/MM/YY'
+};
 
 const TIME_FORMAT = 'HH:mm';
 
-const getDate = (dateFrom) => dateFrom ? dayjs(dateFrom).format(DATE_FORMAT) : '';
+const getDate = (dateFrom, dateFormat) => dateFrom ? dayjs(dateFrom).format(dateFormat) : '';
 
 const getTime = (time) => time ? dayjs(time).format(TIME_FORMAT) : '';
 
@@ -40,4 +43,4 @@ const getTimeLength = (dateFrom, dateTo) => `${getTimeHourLength(dateFrom, dateT
 
 const setFavoriteClass = (data) => data ? 'event__favorite-btn--active' : '';
 
-export { getRandomArrayElement, getDate, getTime, getTimeLength, setFavoriteClass };
+export { getRandomArrayElement, getDate, getTime, getTimeLength, setFavoriteClass, DATE_FORMAT };

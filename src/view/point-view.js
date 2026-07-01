@@ -1,12 +1,13 @@
 import { createElement } from '../render.js';
-import { getDate, getTime, getTimeLength, setFavoriteClass } from '../utils.js';
+import { getDate, getTime, getTimeLength, setFavoriteClass, DATE_FORMAT } from '../utils.js';
 
 const createPointTemplate = (point, destinations, offers) => {
   const {basePrice, dateFrom, dateTo, isFavorite, type } = point;
   const pointDestination = destinations.find((dest) => dest.id === point.destination); // находим в пунктах назначения совпадающий по id c указанным в точке маршрута
   const typeOffers = offers.find((offer) => offer.type === point.type).offers; // находим в офферах совпадающие по типу с указанным в точке маршрута
   const selectedOffers = typeOffers.filter((typeOffer) => point.offers.includes(typeOffer.id)); // находим в списке офферов данного типа, выбранные в точке маршрута
-  const date = getDate(dateFrom);
+
+  const date = getDate(dateFrom, DATE_FORMAT.POINT);
   const startTime = getTime(dateFrom);
   const endTime = getTime(dateTo);
   const timeLength = getTimeLength(dateFrom, dateTo);
