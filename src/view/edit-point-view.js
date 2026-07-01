@@ -109,56 +109,24 @@ const createEditpointTemplate = (point, destinations, offers) => {
         </button>
       </header>
       <section class="event__details">
-        <section class="event__section  event__section--offers">
+
+      ${typeOffers.length ? // если в данной точке есть доступные офферы, выводим их список, если нет - пустую строку
+    `<section class="event__section  event__section--offers">
           <h3 class="event__section-title  event__section-title--offers">Offers</h3>
 
           <div class="event__available-offers">
-            <div class="event__offer-selector">
-              <input class="event__offer-checkbox  visually-hidden" id="event-offer-luggage-1" type="checkbox" name="event-offer-luggage" checked="">
+            ${typeOffers.map((typeOffer) => `
+              <div class="event__offer-selector">
+              <input class="event__offer-checkbox  visually-hidden" id="event-offer-luggage-1" type="checkbox" name="event-offer-luggage" ${selectedOffers.map((selectedOffer) => selectedOffer.id).includes(typeOffer.id) ? 'checked' : ''}>
               <label class="event__offer-label" for="event-offer-luggage-1">
-                <span class="event__offer-title">Add luggage</span>
+                <span class="event__offer-title">${typeOffer.title}</span>
                 +€&nbsp;
-                <span class="event__offer-price">50</span>
+                <span class="event__offer-price">${typeOffer.price}</span>
               </label>
-            </div>
+            </div>`).join('')}
 
-            <div class="event__offer-selector">
-              <input class="event__offer-checkbox  visually-hidden" id="event-offer-comfort-1" type="checkbox" name="event-offer-comfort" checked="">
-              <label class="event__offer-label" for="event-offer-comfort-1">
-                <span class="event__offer-title">Switch to comfort</span>
-                +€&nbsp;
-                <span class="event__offer-price">80</span>
-              </label>
-            </div>
+        </section>` : ''}
 
-            <div class="event__offer-selector">
-              <input class="event__offer-checkbox  visually-hidden" id="event-offer-meal-1" type="checkbox" name="event-offer-meal">
-              <label class="event__offer-label" for="event-offer-meal-1">
-                <span class="event__offer-title">Add meal</span>
-                +€&nbsp;
-                <span class="event__offer-price">15</span>
-              </label>
-            </div>
-
-            <div class="event__offer-selector">
-              <input class="event__offer-checkbox  visually-hidden" id="event-offer-seats-1" type="checkbox" name="event-offer-seats">
-              <label class="event__offer-label" for="event-offer-seats-1">
-                <span class="event__offer-title">Choose seats</span>
-                +€&nbsp;
-                <span class="event__offer-price">5</span>
-              </label>
-            </div>
-
-            <div class="event__offer-selector">
-              <input class="event__offer-checkbox  visually-hidden" id="event-offer-train-1" type="checkbox" name="event-offer-train">
-              <label class="event__offer-label" for="event-offer-train-1">
-                <span class="event__offer-title">Travel by train</span>
-                +€&nbsp;
-                <span class="event__offer-price">40</span>
-              </label>
-            </div>
-          </div>
-        </section>
 
         <section class="event__section  event__section--destination">
           <h3 class="event__section-title  event__section-title--destination">Destination</h3>

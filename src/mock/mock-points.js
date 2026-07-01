@@ -124,6 +124,16 @@ const mockPoints = [
     ],
     type: 'flight'
   },
+  {
+    id: 'jhklkl-5552',
+    basePrice: getRandomArrayElement(mockPrices),
+    dateFrom: '2026-07-10T09:10:33.444Z',
+    dateTo: '2026-07-10T09:37:35.666Z',
+    destination: 'ljuccr-6492',
+    isFavorite: true,
+    offers: [],
+    type: 'drive'
+  }
 ];
 
 const getRandomPoint = () => getRandomArrayElement(mockPoints);
