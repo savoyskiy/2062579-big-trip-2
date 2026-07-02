@@ -13,6 +13,8 @@ const getDate = (dateFrom, dateFormat) => dateFrom ? dayjs(dateFrom).format(date
 
 const getTime = (time) => time ? dayjs(time).format(TIME_FORMAT) : '';
 
+// добавить отображение количества дней, если они есть
+
 const getTimeHourLength = (dateFrom, dateTo) => {
   let result = '';
   const length = dayjs(dateTo).diff(dayjs(dateFrom), 'h');
