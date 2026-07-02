@@ -165,7 +165,7 @@ const createAddNewPointTemplate = () => `<li class="trip-events__item">
 
 export default class AddNewPointView {
   getTemplate() {
-    return createAddNewPointTemplate;
+    return createAddNewPointTemplate();
   }
 
   getElement() {
