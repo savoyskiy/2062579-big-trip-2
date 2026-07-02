@@ -52,7 +52,7 @@ const createEditpointTemplate = (point, destinations, offers) => {
 
         <div class="event__field-group  event__field-group--time">
           <label class="visually-hidden" for="event-start-time-${point.id}">From</label>
-          <input class="event__input  event__input--time" id="event-start-time${point.id}" type="text" name="event-start-time" value="${date} ${startTime}">
+          <input class="event__input  event__input--time" id="event-start-time-${point.id}" type="text" name="event-start-time" value="${date} ${startTime}">
           —
           <label class="visually-hidden" for="event-end-time-${point.id}">To</label>
           <input class="event__input  event__input--time" id="event-end-time-${point.id}" type="text" name="event-end-time" value="${date} ${endTime}">
