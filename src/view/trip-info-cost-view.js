@@ -6,7 +6,7 @@ const createTripInfoCost = () => `<p class="trip-info__cost">
 
 export default class TripInfoCostView {
   getTemplate() {
-    return createTripInfoCost;
+    return createTripInfoCost();
   }
 
   getElement() {
