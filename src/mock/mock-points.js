@@ -1,5 +1,17 @@
 import { getRandomArrayElement } from '../utils.js';
 
+const POINT_TYPES = [
+  'taxi',
+  'bus',
+  'train',
+  'ship',
+  'drive',
+  'flight',
+  'check-in',
+  'sightseeing',
+  'restaurant'
+];
+
 const mockPrices = [5, 10, 20, 30, 40, 45, 50, 75, 90, 95, 100, 105, 115, 120, 150, 175, 200, 250, 300];
 
 const mockPoints = [
@@ -14,7 +26,7 @@ const mockPoints = [
       'dfg-123',
       'ase-654'
     ], // связать с набором mockOffers по ключу
-    type: 'taxi' // допустимый список: taxi┃bus┃train┃ship┃drive┃flight┃check-in┃sightseeing┃restaurant
+    type: 'taxi' // допустимый список в POINT_TYPES
   },
   {
     id: 'jhklkl-5552',
@@ -138,4 +150,4 @@ const mockPoints = [
 
 const getRandomPoint = () => getRandomArrayElement(mockPoints);
 
-export { getRandomPoint };
+export { POINT_TYPES, getRandomPoint };
