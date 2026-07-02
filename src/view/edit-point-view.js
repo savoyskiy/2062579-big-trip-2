@@ -26,7 +26,7 @@ const createEditpointTemplate = (point, destinations, offers) => {
             <fieldset class="event__type-group">
               <legend class="visually-hidden">Event type</legend>
 
-              ${POINT_TYPES.map((pointType) => (
+              ${POINT_TYPES.map((pointType) => ( // вставляем список с типами маршрута, тип маршрута данной точки выделяем атрибутом checked
     `<div class="event__type-item">
                   <input id="event-type-${pointType}-${point.id}" class="event__type-input  visually-hidden" type="radio" name="event-type" value="${pointType}" ${pointType === type ? 'checked' : ''}>
                   <label class="event__type-label  event__type-label--${pointType}" for="event-type-${pointType}-${point.id}">${pointType}</label>
@@ -43,9 +43,9 @@ const createEditpointTemplate = (point, destinations, offers) => {
           </label>
           <input class="event__input  event__input--destination" id="event-destination-${point.id}" type="text" name="event-destination" value="${pointDestination.name}" list="destination-list-${point.id}">
           <datalist id="destination-list-${point.id}">
-            ${destinations.map((dest) => (
+            ${destinations.map((dest) => ( // вставляем пункты назначения в выпадающий список
     `<option value="${dest.name}">
-              </option>`
+    </option>`
   )).join('')}
           </datalist>
         </div>

@@ -34,7 +34,7 @@ const createPointTemplate = (point, destinations, offers) => {
           </p>
           <h4 class="visually-hidden">Offers:</h4>
           <ul class="event__selected-offers">
-            ${selectedOffers.map((offer) => (
+            ${selectedOffers.map((offer) => ( // вставляем выбранные офферы
       `<li class="event__offer">
         <span class="event__offer-title">${offer.title}</span>
         +€&nbsp;

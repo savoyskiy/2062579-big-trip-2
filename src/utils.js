@@ -2,9 +2,9 @@ import dayjs from 'dayjs';
 
 const getRandomArrayElement = (items) => items[Math.floor(Math.random() * items.length)];
 
-const DATE_FORMAT = {
-  POINT: 'MMM DD',
-  EDIT_POINT: 'DD/MM/YY'
+const DATE_FORMAT = { // форматы даты в разных блоках
+  POINT: 'MMM DD', // в точке маршрута
+  EDIT_POINT: 'DD/MM/YY' // в форме редактирования точки
 };
 
 const TIME_FORMAT = 'HH:mm';
