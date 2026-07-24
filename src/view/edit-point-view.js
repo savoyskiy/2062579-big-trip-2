@@ -203,17 +203,19 @@ export default class EditPointView extends AbstractStatefulView {
   /**
    * метод изменения начальной даты пользователем
    */
-  #dateFromCloseHandler = ([userDateFrom]) => {
-    this.updateElement({
-      dateFrom: userDateFrom
+  #dateFromChangeHandler = ([userDateFrom]) => {
+    this.#dateToPicker.set('minDate', userDateFrom);
+    this._setState({
+      dateTo: userDateFrom
     });
   };
 
   /**
    * метод изменения конечной даты пользователем
    */
-  #dateToCloseHandler = ([userDateTo]) => {
-    this.updateElement({
+  #dateToChangeHandler = ([userDateTo]) => {
+    this.#dateFromPicker.set('maxDate', userDateTo);
+    this._setState({
       dateTo: userDateTo
     });
   };
@@ -231,7 +233,7 @@ export default class EditPointView extends AbstractStatefulView {
         ...commonPickerConfig,
         defaultDate: this._state.dateFrom,
         maxDate: this._state.dateTo,
-        onClose: this.#dateFromCloseHandler
+        onChange: this.#dateFromChangeHandler
       }
     );
 
@@ -241,7 +243,7 @@ export default class EditPointView extends AbstractStatefulView {
         ...commonPickerConfig,
         defaultDate: this._state.dateTo,
         minDate: this._state.dateFrom,
-        onClose: this.#dateToCloseHandler
+        onChange: this.#dateToChangeHandler
       }
     );
   }
