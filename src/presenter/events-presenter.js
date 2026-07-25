@@ -23,6 +23,10 @@ export default class EventsPresenter {
     this.#pointsModel = pointsModel;
   }
 
+  get points() {
+    return this.#pointsModel.points;
+  }
+
   init() {
     this.#eventsPoints = [...this.#pointsModel.points];
     this.#destinations = [...this.#pointsModel.destinations];

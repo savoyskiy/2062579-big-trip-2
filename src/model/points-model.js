@@ -1,10 +1,11 @@
 import { getUnicRandomPoints } from '../mock/mock-points.js';
 import { mockDestinations } from '../mock/mock-destinations.js';
 import { mockOffers } from '../mock/mock-offers.js';
+import Observable from '../framework/observable.js';
 
 const POINTS_NUMBER = 3; // количество отрисовываемых точек маршрута
 
-export default class PointsModel {
+export default class PointsModel extends Observable {
   #points = Array.from({ length: POINTS_NUMBER }, getUnicRandomPoints());
   #destinations = mockDestinations;
   #offers = mockOffers;
