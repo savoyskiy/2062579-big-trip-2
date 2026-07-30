@@ -122,12 +122,12 @@ export default class EventsPresenter {
       case UpdateType.MINOR:
         // - обновить список
         this.#clearPointsList();
-        this.#renderPoints();
+        this.#renderEventsList();
         break;
       case UpdateType.MAJOR:
         // - обновить всю доску (при переключении фильтра)
         this.#clearPointsList({resetSortType: true});
-        this.#renderPoints();
+        this.#renderEventsList();
         break;
     }
   };
@@ -159,10 +159,13 @@ export default class EventsPresenter {
     this.#sortPoints(SortingTypes.DAY); // сортируем задачи по датам
     this.#renderPoints(); // рендерим точки
 
-    if(this.#pointsList.element.children.length === 0) { // проверка наличия точек маршрута
+    if(this.#pointsModel.points.length === 0) { // проверка наличия точек маршрута
       this.#renderNoPoint(); // если их нет, рендерим заглушку
-    } else {
-      this.#renderSorting(); // если точки есть, добавляем сортировку
+      if(this.#pointsListContainer.querySelector('.trip-sort')) {
+        this.#pointsListContainer.querySelector('.trip-sort').remove(); // если сортировка была отрисована ранее, удаляем
+      }
+    } else if(!this.#pointsListContainer.querySelector('.trip-sort')) { // если точки есть и сортировка еще не добавлена, добавляем сортировку
+      this.#renderSorting();
     }
   }
 }
