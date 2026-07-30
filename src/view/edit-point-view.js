@@ -122,14 +122,16 @@ export default class EditPointView extends AbstractStatefulView {
   #handleFormSubmit = null;
   #dateFromPicker = null;
   #dateToPicker = null;
+  #handleDeleteClick = null;
 
-  constructor(point, destinations, offers, onEditClick, onFormSubmit) {
+  constructor(point, destinations, offers, onEditClick, onFormSubmit, onDeleteClick) {
     super();
     this._setState(EditPointView.parsePointToState(point));
     this.#destinations = destinations;
     this.#offers = offers;
     this.#handleEditClick = onEditClick;
     this.#handleFormSubmit = onFormSubmit;
+    this.#handleDeleteClick = onDeleteClick;
 
     this._restoreHandlers();
   }
@@ -142,8 +144,9 @@ export default class EditPointView extends AbstractStatefulView {
     if(this.element.querySelector('.event__available-offers')) { // проверка на случай отсутствия офферов в выбранном типе точки
       this.element.querySelector('.event__available-offers').addEventListener('change', this.#offerChangeHandler); // изменение выбора офферов
     }
-    // this.element.querySelector('.event__input--price').addEventListener('change', this.#priceChangeHandler); // выбор адреса точки
-    this.#setDatePicker();
+    // this.element.querySelector('.event__input--price').addEventListener('change', this.#priceChangeHandler); // выбор цены точки
+    this.#setDatePicker(); // календарики в выборах дат
+    this.element.querySelector('.event__reset-btn').addEventListener('click', this.#pointDeleteClickHandler); // удаление точки
   }
 
   #editClickHandler = (evt) => { // обработчик по клику
@@ -218,6 +221,14 @@ export default class EditPointView extends AbstractStatefulView {
     this._setState({
       dateTo: userDateTo
     });
+  };
+
+  /**
+   * метод удаления точки
+   */
+  #pointDeleteClickHandler = (evt) => {
+    evt.preventDefault();
+    this.#handleDeleteClick(EditPointView.parseStateToPoint(this._state));
   };
 
   #setDatePicker() {

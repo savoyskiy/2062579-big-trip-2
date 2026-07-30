@@ -19,6 +19,16 @@ const SortingTypes = {
   PRICE: 'price',
   OFFER: 'offer'
 };
+const UserAction = {
+  UPDATE_POINT: 'UPDATE_POINT',
+  ADD_POINT: 'ADD_POINT',
+  DELETE_POINT: 'DELETE_POINT',
+};
+const UpdateType = {
+  PATCH: 'PATCH',
+  MINOR: 'MINOR',
+  MAJOR: 'MAJOR',
+};
 
 /**
  * функция проверки нажатия клавиши Escape
@@ -129,4 +139,4 @@ const setFavoriteClass = (data) => data ? 'event__favorite-btn--active' : '';
  */
 const updateItem = (items, update) => items.map((item) => item.id === update.id ? update : item);
 
-export { isEscapeDown, getRandomArrayElement, getDate, getTime, getTimeLength, setFavoriteClass, updateItem, sortPrice, sortDay, sortTime, DateFormat, SortingTypes };
+export { isEscapeDown, getRandomArrayElement, getDate, getTime, getTimeLength, setFavoriteClass, updateItem, sortPrice, sortDay, sortTime, DateFormat, SortingTypes, UserAction, UpdateType };

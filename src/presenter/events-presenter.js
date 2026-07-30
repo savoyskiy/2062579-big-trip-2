@@ -3,7 +3,7 @@ import NoPointView from '../view/no-point-view.js';
 import SortingView from '../view/sorting-view.js';
 import { RenderPosition, render } from '../framework/render.js';
 import PointPresenter from '../presenter/point-presenter.js';
-import { updateItem, SortingTypes, sortPrice, sortDay, sortTime } from '../utils/utils.js';
+import { SortingTypes, sortPrice, sortDay, sortTime, UserAction, UpdateType } from '../utils/utils.js';
 
 export default class EventsPresenter {
   #pointsList = new PointsListView(); // список для точек маршрута
@@ -16,11 +16,12 @@ export default class EventsPresenter {
   #pointPresenters = new Map(); // коллекция с точками маршрута
   #sortComponent = null;
   #currentSortType = SortingTypes.DAY;
-  // #sourcedEventsPoints = []; // копия изначального набора данных. Нужна?
 
   constructor({pointsListContainer, pointsModel}) {
     this.#pointsListContainer = pointsListContainer; // получаем контейнер, в который будет вставлен список точек
     this.#pointsModel = pointsModel;
+
+    this.#pointsModel.addObserver(this.#handleModelChange);
   }
 
   get points() {
@@ -31,10 +32,6 @@ export default class EventsPresenter {
     this.#eventsPoints = [...this.#pointsModel.points];
     this.#destinations = [...this.#pointsModel.destinations];
     this.#offers = [...this.#pointsModel.offers];
-    /**
-     * сохраненный исходный массив точек. Нужен?
-     */
-    // this.#sourcedEventsPoints = [...this.#pointsModel.points];
 
     this.#renderEventsList();
   }
@@ -68,8 +65,6 @@ export default class EventsPresenter {
       case SortingTypes.PRICE:
         this.#eventsPoints.sort(sortPrice);
         break;
-      // default: // нужно ли значение по-умолчанию?
-        // this.#eventsPoints = [...this.#sourcedEventsPoints];
     }
 
     this.#currentSortType = sortType;
@@ -105,10 +100,42 @@ export default class EventsPresenter {
   /**
    * метод обновления данных при ручном изменении пользователем
    */
-  #handlePointChange = (changedPoint) => {
-    this.#eventsPoints = updateItem(this.#eventsPoints, changedPoint);
-    // this.#sourcedEventsPoints = updateItem(this.#eventsPoints, changedPoint); // сохраненный тоже обновляем
-    this.#pointPresenters.get(changedPoint.id).init(changedPoint);
+  // #handlePointChange = (changedPoint) => {
+  //   this.#eventsPoints = updateItem(this.#eventsPoints, changedPoint);
+  //   this.#pointPresenters.get(changedPoint.id).init(changedPoint);
+  // };
+
+  #handleViewAction = (actionType, updateType, update) => {
+    switch (actionType) {
+      case UserAction.UPDATE_TASK:
+        this.#pointsModel.updatePoint(updateType, update);
+        break;
+      case UserAction.ADD_TASK:
+        this.#pointsModel.addPoint(updateType, update);
+        break;
+      case UserAction.DELETE_TASK:
+        this.#pointsModel.deletePoint(updateType, update);
+        break;
+    }
+  };
+
+  #handleModelChange = (updateType, data) => {
+    switch (updateType) {
+      case UpdateType.PATCH:
+        // - обновить часть списка
+        this.#pointPresenters.get(data.id).init(data);
+        break;
+      case UpdateType.MINOR:
+        // - обновить список
+        this.#clearPointsList();
+        this.#renderPoints();
+        break;
+      case UpdateType.MAJOR:
+        // - обновить всю доску (при переключении фильтра)
+        this.#clearPointsList();
+        this.#renderPoints();
+        break;
+    }
   };
 
   /**
@@ -123,7 +150,7 @@ export default class EventsPresenter {
    */
   #renderPoints() {
     for(let i = 0; i < this.#eventsPoints.length; i++) { // вставляем в список точки маршрута
-      const pointPresenter = new PointPresenter(this.#eventsPoints[i], this.#destinations, this.#offers, this.#handlePointChange, this.#handleModeChange, this.#pointsList);
+      const pointPresenter = new PointPresenter(this.#eventsPoints[i], this.#destinations, this.#offers, this.#handleViewAction, this.#handleModeChange, this.#pointsList);
       pointPresenter.init(this.#eventsPoints[i]);
       this.#pointPresenters.set(this.#eventsPoints[i].id, pointPresenter); // заполняем коллекцию точек маршрута
     }

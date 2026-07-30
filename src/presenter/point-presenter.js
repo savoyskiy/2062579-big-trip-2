@@ -1,7 +1,7 @@
 import EditPointView from '../view/edit-point-view.js';
 import PointView from '../view/point-view.js';
 import { render, replace, remove } from '../framework/render.js';
-import { isEscapeDown } from '../utils/utils.js';
+import { isEscapeDown, UserAction, UpdateType } from '../utils/utils.js';
 
 const Mode = {
   DEFAULT: 'DEFAULT',
@@ -42,7 +42,7 @@ export default class PointPresenter {
      */
     this.#pointComponent = new PointView(this.#point, this.#destinations, this.#offers, this.#onFavoriteClick, this.#onEditClick);
 
-    this.#pointEditComponent = new EditPointView(this.#point, this.#destinations, this.#offers, this.#onCloseClick, this.#onFormSubmit);
+    this.#pointEditComponent = new EditPointView(this.#point, this.#destinations, this.#offers, this.#onCloseClick, this.#onFormSubmit, this.#handleDeleteClick);
 
     /**
      * проверка, были уже ранее созданы точки или нет (=== null)
@@ -102,9 +102,25 @@ export default class PointPresenter {
   };
 
   /**
+   * метод для удаления точки по кнопке удаления
+   */
+  #handleDeleteClick = (point) => {
+    this.#handleDataChange(
+      UserAction.DELETE_POINT,
+      UpdateType.MINOR,
+      point,
+    );
+  };
+
+  /**
    * метод для закрытия формы по кнопке save (временно, потом заменю функционал на сабмит формы)
    */
-  #onFormSubmit = () => {
+  #onFormSubmit = (update) => {
+    this.#handleDataChange(
+      UserAction.UPDATE_POINT,
+      UpdateType.PATCH,
+      update
+    );
     this.#replaceEditToPoint(); // замена формы на точку
     document.removeEventListener('keydown', this.#escKeyDownHandler); // удаление обработчика по esc
   };
@@ -113,7 +129,10 @@ export default class PointPresenter {
    * метод для клика по кнопке избранного
    */
   #onFavoriteClick = () => {
-    this.#handleDataChange({...this.#point, isFavorite: !this.#point.isFavorite});
+    this.#handleDataChange(
+      UserAction.UPDATE_POINT,
+      UpdateType.PATCH,
+      {...this.#point, isFavorite: !this.#point.isFavorite});
   };
 
   /**
