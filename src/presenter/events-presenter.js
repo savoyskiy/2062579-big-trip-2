@@ -82,9 +82,12 @@ export default class EventsPresenter {
   /**
    * метод очистки списка точек
    */
-  #clearPointsList() {
+  #clearPointsList({resetSortType = false} = {}) {
     this.#pointPresenters.forEach((presenter) => presenter.destroy());
     this.#pointPresenters.clear();
+    if (resetSortType) {
+      this.#currentSortType = SortingTypes.DAY;
+    }
   }
 
   /**
@@ -100,20 +103,15 @@ export default class EventsPresenter {
   /**
    * метод обновления данных при ручном изменении пользователем
    */
-  // #handlePointChange = (changedPoint) => {
-  //   this.#eventsPoints = updateItem(this.#eventsPoints, changedPoint);
-  //   this.#pointPresenters.get(changedPoint.id).init(changedPoint);
-  // };
-
   #handleViewAction = (actionType, updateType, update) => {
     switch (actionType) {
-      case UserAction.UPDATE_TASK:
+      case UserAction.UPDATE_POINT:
         this.#pointsModel.updatePoint(updateType, update);
         break;
-      case UserAction.ADD_TASK:
+      case UserAction.ADD_POINT:
         this.#pointsModel.addPoint(updateType, update);
         break;
-      case UserAction.DELETE_TASK:
+      case UserAction.DELETE_POINT:
         this.#pointsModel.deletePoint(updateType, update);
         break;
     }
@@ -132,7 +130,7 @@ export default class EventsPresenter {
         break;
       case UpdateType.MAJOR:
         // - обновить всю доску (при переключении фильтра)
-        this.#clearPointsList();
+        this.#clearPointsList({resetSortType: true});
         this.#renderPoints();
         break;
     }
@@ -163,7 +161,7 @@ export default class EventsPresenter {
     this.#renderPointList(); // вставляем список в контейнер
 
     this.#sortPoints(SortingTypes.DAY); // сортируем задачи по датам
-    this.#renderPoints();
+    this.#renderPoints(); // рендерим точки
 
     if(this.#pointsList.element.children.length === 0) { // проверка наличия точек маршрута
       this.#renderNoPoint(); // если их нет, рендерим заглушку
