@@ -4,12 +4,14 @@ import SortingView from '../view/sorting-view.js';
 import { RenderPosition, render } from '../framework/render.js';
 import PointPresenter from '../presenter/point-presenter.js';
 import { SortingTypes, sortPrice, sortDay, sortTime, UserAction, UpdateType } from '../utils/utils.js';
+import { filter } from '../utils/filter.js';
 
 export default class EventsPresenter {
   #pointsList = new PointsListView(); // список для точек маршрута
 
   #pointsListContainer = null;
   #pointsModel = null;
+  #filterModel = null;
   // #eventsPoints = []; // ?
   #destinations = [];
   #offers = [];
@@ -17,11 +19,29 @@ export default class EventsPresenter {
   #sortComponent = null;
   #currentSortType = SortingTypes.DAY;
 
-  constructor({pointsListContainer, pointsModel}) {
+  constructor({pointsListContainer, pointsModel, filterModel}) {
     this.#pointsListContainer = pointsListContainer; // получаем контейнер, в который будет вставлен список точек
     this.#pointsModel = pointsModel;
-
+    this.#filterModel = filterModel;
     this.#pointsModel.addObserver(this.#handleModelChange);
+    this.#filterModel.addObserver(this.#handleModelChange);
+  }
+
+  get points() {
+    const filterType = this.#filterModel.filter;
+    const points = this.#pointsModel.points;
+    const filteredPoints = filter[filterType](points);
+
+    switch (this.#currentSortType) {
+      case SortingTypes.DAY:
+        return filteredPoints.sort(sortDay);
+      case SortingTypes.TIME:
+        return filteredPoints.sort(sortTime);
+      case SortingTypes.PRICE:
+        return filteredPoints.sort(sortPrice);
+    }
+
+    return filteredPoints;
   }
 
   init() {

@@ -33,4 +33,4 @@ const generateFilter = (points) => Object.entries(filter).map(
   })
 );
 
-export { generateFilter };
+export { generateFilter, filter, FilterTypes };
