@@ -10,7 +10,7 @@ export default class EventsPresenter {
 
   #pointsListContainer = null;
   #pointsModel = null;
-  #eventsPoints = [];
+  // #eventsPoints = []; // ?
   #destinations = [];
   #offers = [];
   #pointPresenters = new Map(); // коллекция с точками маршрута
@@ -24,12 +24,8 @@ export default class EventsPresenter {
     this.#pointsModel.addObserver(this.#handleModelChange);
   }
 
-  get points() {
-    return this.#pointsModel.points;
-  }
-
   init() {
-    this.#eventsPoints = [...this.#pointsModel.points];
+    // this.#eventsPoints = [...this.#pointsModel.points]; // ?
     this.#destinations = [...this.#pointsModel.destinations];
     this.#offers = [...this.#pointsModel.offers];
 
@@ -57,13 +53,13 @@ export default class EventsPresenter {
   #sortPoints(sortType) {
     switch (sortType) {
       case SortingTypes.DAY:
-        this.#eventsPoints.sort(sortDay);
+        this.#pointsModel.points.sort(sortDay);
         break;
       case SortingTypes.TIME:
-        this.#eventsPoints.sort(sortTime);
+        this.#pointsModel.points.sort(sortTime);
         break;
       case SortingTypes.PRICE:
-        this.#eventsPoints.sort(sortPrice);
+        this.#pointsModel.points.sort(sortPrice);
         break;
     }
 
@@ -147,10 +143,10 @@ export default class EventsPresenter {
    * метод отрисовки точек маршрута
    */
   #renderPoints() {
-    for(let i = 0; i < this.#eventsPoints.length; i++) { // вставляем в список точки маршрута
-      const pointPresenter = new PointPresenter(this.#eventsPoints[i], this.#destinations, this.#offers, this.#handleViewAction, this.#handleModeChange, this.#pointsList);
-      pointPresenter.init(this.#eventsPoints[i]);
-      this.#pointPresenters.set(this.#eventsPoints[i].id, pointPresenter); // заполняем коллекцию точек маршрута
+    for(let i = 0; i < this.#pointsModel.points.length; i++) { // вставляем в список точки маршрута
+      const pointPresenter = new PointPresenter(this.#pointsModel.points[i], this.#destinations, this.#offers, this.#handleViewAction, this.#handleModeChange, this.#pointsList);
+      pointPresenter.init(this.#pointsModel.points[i]);
+      this.#pointPresenters.set(this.#pointsModel.points[i].id, pointPresenter); // заполняем коллекцию точек маршрута
     }
   }
 
