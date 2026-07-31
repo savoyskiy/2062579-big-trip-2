@@ -26,11 +26,4 @@ function isPointPresent(dateFrom, dateTo) {
   return (dateTo && dayjs().isBefore(dateTo, 'H')) && (dateFrom && dayjs().isAfter(dateFrom, 'H'));
 }
 
-const generateFilter = (points) => Object.entries(filter).map(
-  ([filterType, filterValue]) => ({
-    type: filterType,
-    value: filterValue(points)
-  })
-);
-
-export { generateFilter, filter, FilterTypes };
+export { filter, FilterTypes };

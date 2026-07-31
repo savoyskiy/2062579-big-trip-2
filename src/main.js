@@ -1,7 +1,5 @@
 import TripInfoView from './presenter/trip-info-presenter.js';
-// import FilterView from './view/filter-view.js';
 import EventsPresenter from './presenter/events-presenter.js';
-// import { render } from './framework/render.js';
 import PointsModel from './model/points-model.js';
 import { createTripInfoDestinationeNames, calculateCosts } from './utils/trip-info.js';
 import FilterPresenter from './presenter/filter-presenter.js';
@@ -32,8 +30,7 @@ const filterPresenter = new FilterPresenter({
   filterModel: filterModel,
   pointsModel: pointsModel
 });
-// render(new FilterView({ filters, currentFilterType: 'everything', onFilterTypeChange: () => {} }), filterContainer); // добавляем фильтры
 
-filterPresenter.init();
+filterPresenter.init(); // добавляем фильтры
 eventsPresenter.init(); // добавляем презентер с маршрутом
 tripInfo.init(); // добавляем информацию о маршруте
