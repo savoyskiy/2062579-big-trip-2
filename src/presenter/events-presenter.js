@@ -4,11 +4,11 @@ import SortingView from '../view/sorting-view.js';
 import { RenderPosition, render } from '../framework/render.js';
 import PointPresenter from '../presenter/point-presenter.js';
 import { SortingTypes, sortPrice, sortDay, sortTime, UserAction, UpdateType } from '../utils/utils.js';
-import { filter } from '../utils/filter.js';
+import { filter, FilterTypes } from '../utils/filter.js';
 
 export default class EventsPresenter {
   #pointsList = new PointsListView(); // список для точек маршрута
-
+  #noPointsComponent = null;
   #pointsListContainer = null;
   #pointsModel = null;
   #filterModel = null;
@@ -18,6 +18,7 @@ export default class EventsPresenter {
   #pointPresenters = new Map(); // коллекция с точками маршрута
   #sortComponent = null;
   #currentSortType = SortingTypes.DAY;
+  #filterType = FilterTypes.EVERYTHING;
 
   constructor({pointsListContainer, pointsModel, filterModel}) {
     this.#pointsListContainer = pointsListContainer; // получаем контейнер, в который будет вставлен список точек
@@ -28,9 +29,9 @@ export default class EventsPresenter {
   }
 
   get points() {
-    const filterType = this.#filterModel.filter;
+    this.filterType = this.#filterModel.filter;
     const points = this.#pointsModel.points;
-    const filteredPoints = filter[filterType](points); // переделать filter на фильтрацию
+    const filteredPoints = filter[this.filterType](points); // переделать filter на фильтрацию
 
     switch (this.#currentSortType) {
       case SortingTypes.DAY:
@@ -63,7 +64,8 @@ export default class EventsPresenter {
    * метод рендеринга заглушки
    */
   #renderNoPoint() {
-    render(new NoPointView(), this.#pointsListContainer);
+    this.#noPointsComponent = new NoPointView({filterType: this.#filterModel.filter});
+    render(this.#noPointsComponent, this.#pointsListContainer);
   }
 
   /**
@@ -151,7 +153,7 @@ export default class EventsPresenter {
         this.#clearPointsList({resetSortType: true});
         this.#renderEventsList();
         this.#pointsListContainer.querySelector('.trip-sort').remove(); // удаляем сортировку
-        this.#renderSorting(); // отрисовываем заного
+        this.#renderSorting(); // отрисовываем снова
         break;
     }
   };
@@ -183,13 +185,15 @@ export default class EventsPresenter {
     this.#sortPoints(SortingTypes.DAY); // сортируем задачи по датам
     this.#renderPoints(); // рендерим точки
 
-    console.log(this.points.length);
     if(this.points.length === 0) { // проверка наличия точек маршрута
       this.#renderNoPoint(); // если их нет, рендерим заглушку
-      if(this.#pointsListContainer.querySelector('.trip-sort')) {
-        this.#pointsListContainer.querySelector('.trip-sort').remove(); // если сортировка была отрисована ранее, удаляем
+      if(this.#pointsListContainer.querySelector('.trip-sort')) { // если сортировка была отрисована ранее
+        this.#pointsListContainer.querySelector('.trip-sort').remove(); // удаляем ее
       }
     } else if(!this.#pointsListContainer.querySelector('.trip-sort')) { // если точки есть и сортировка еще не добавлена, добавляем сортировку
+      if(this.#pointsListContainer.querySelector('.trip-events__msg')) { // если ранее отрисована заглушка
+        this.#pointsListContainer.querySelector('.trip-events__msg').remove(); // удаляем ее
+      }
       this.#renderSorting();
     }
   }
