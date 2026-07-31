@@ -8,10 +8,10 @@ const FilterTypes = {
 };
 
 const filter = {
-  [FilterTypes.EVERYTHING]: (points) => points.length > 0,
-  [FilterTypes.FUTURE]: (points) => points.some((point) => isPointFuture(point.dateFrom)),
-  [FilterTypes.PRESENT]: (points) => points.some((point) => isPointPresent(point.dateFrom, point.dateTo)),
-  [FilterTypes.PAST]: (points) => points.some((point) => isPointPast(point.dateTo))
+  [FilterTypes.EVERYTHING]: (points) => points,
+  [FilterTypes.FUTURE]: (points) => points.filter((point) => isPointFuture(point.dateFrom)),
+  [FilterTypes.PRESENT]: (points) => points.filter((point) => isPointPresent(point.dateFrom, point.dateTo)),
+  [FilterTypes.PAST]: (points) => points.filter((point) => isPointPast(point.dateTo))
 };
 
 function isPointPast(dateTo) {
